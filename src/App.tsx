@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
-import { Bot, Zap, Cpu, CheckCircle2, Layout, Database, MessageSquare, Code, Globe, Mail } from "lucide-react";
+import { Bot, Zap, Cpu, CheckCircle2, Layout, Database, MessageSquare, Code, Globe, Mail, LucideIcon } from "lucide-react";
 import ChatWidget from "./ChatWidget";
 
-const WorkflowStep = ({ icon: Icon, title, description, isLast }: { icon: any, title: string, description: string, isLast?: boolean }) => (
+const WorkflowStep = ({ icon: Icon, title, description, isLast }: { icon: LucideIcon, title: string, description: string, isLast?: boolean }) => (
   <div className="relative flex flex-col items-center group">
     <motion.div 
       whileHover={{ scale: 1.1 }}
@@ -48,7 +48,7 @@ const CaseStudyCard = ({ title, results, description }: { title: string, results
 );
 
 const App = () => {
-  const [submitted, setSubmitted] = React.useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
