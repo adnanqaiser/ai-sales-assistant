@@ -48,6 +48,14 @@ const CaseStudyCard = ({ title, results, description }: { title: string, results
 );
 
 const App = () => {
+  const [submitted, setSubmitted] = React.useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 5000);
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#00ff88] selection:text-black">
       {/* Navbar */}
@@ -62,7 +70,12 @@ const App = () => {
           <a href="#" className="text-[#00ff88]">Demo</a>
           <a href="#workflow" className="hover:text-white transition-colors">Workflow</a>
           <a href="#cases" className="hover:text-white transition-colors">Case Studies</a>
-          <a href="https://aq-dev-portfolio.vercel.app/" className="bg-[#00ff88]/10 text-[#00ff88] px-4 py-2 rounded-lg border border-[#00ff88]/20">Hire Me</a>
+          <button 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-[#00ff88]/10 text-[#00ff88] px-4 py-2 rounded-lg border border-[#00ff88]/20 hover:bg-[#00ff88]/20 transition-all"
+          >
+            Hire Me
+          </button>
         </div>
       </nav>
 
@@ -163,10 +176,95 @@ const App = () => {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-6 md:px-20 lg:px-24">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
+            <p className="text-gray-400">Ready to automate your sales? Send me a message!</p>
+          </div>
+
+          <div className="glass-card p-8 md:p-12 border border-white/5 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#00ff88]/5 blur-[80px] rounded-full -z-10" />
+            
+            {submitted ? (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-12"
+              >
+                <div className="w-20 h-20 bg-[#00ff88]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle2 size={40} className="text-[#00ff88]" />
+                </div>
+                <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
+                <p className="text-gray-400">Thank you for reaching out. I'll get back to you shortly.</p>
+                <button 
+                  onClick={() => setSubmitted(false)}
+                  className="mt-8 text-[#00ff88] hover:underline text-sm font-medium"
+                >
+                  Send another message
+                </button>
+              </motion.div>
+            ) : (
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-400">Full Name</label>
+                    <input 
+                      required
+                      type="text" 
+                      placeholder="John Doe"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00ff88]/50 transition-colors"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-400">Email Address</label>
+                    <input 
+                      required
+                      type="email" 
+                      placeholder="john@example.com"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00ff88]/50 transition-colors"
+                    />
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-400">Subject</label>
+                  <select className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00ff88]/50 transition-colors appearance-none">
+                    <option className="bg-[#0a0a0a]">AI Automation Project</option>
+                    <option className="bg-[#0a0a0a]">Consultation</option>
+                    <option className="bg-[#0a0a0a]">Custom Chatbot</option>
+                    <option className="bg-[#0a0a0a]">Other</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-400">Message</label>
+                  <textarea 
+                    required
+                    rows={4}
+                    placeholder="Tell me about your project..."
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00ff88]/50 transition-colors resize-none"
+                  />
+                </div>
+
+                <button 
+                  type="submit"
+                  className="w-full bg-[#00ff88] text-black font-bold py-4 rounded-xl hover:shadow-[0_0_20px_rgba(0,255,136,0.2)] transition-all flex items-center justify-center gap-2"
+                >
+                  <Mail size={20} />
+                  Send Message
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-10 px-6 md:px-20 lg:px-24 border-t border-white/5 text-center">
         <p className="text-gray-500 text-sm">
-          Designed & Developed by <a href="https://aq-dev-portfolio.vercel.app/" className="text-[#00ff88]">Adnan Qaiser</a>
+          Designed & Developed by <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="text-[#00ff88] hover:underline">Adnan Qaiser</button>
         </p>
       </footer>
 
