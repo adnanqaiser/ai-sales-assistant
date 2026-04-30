@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-green: #00ff88;
+}
+
+body {
+  @apply bg-dark-bg text-white selection:bg-brand-green selection:text-black;
+}
+
+.glass-card {
+  @apply bg-white/[0.03] backdrop-blur-lg border border-white/[0.05] rounded-[1.5rem];
+}
+
+.section-padding {
+  @apply py-20 px-6 md:px-20 lg:px-24;
+}
