@@ -61,7 +61,7 @@ const App = () => {
           <a href="#" className="text-[#00ff88]">Demo</a>
           <a href="#workflow" className="hover:text-white transition-colors">Workflow</a>
           <a href="#cases" className="hover:text-white transition-colors">Case Studies</a>
-          <a href="https://qaiseradnan.com" className="bg-[#00ff88]/10 text-[#00ff88] px-4 py-2 rounded-lg border border-[#00ff88]/20">Hire Me</a>
+          <a href="https://aq-dev-portfolio.vercel.app/" className="bg-[#00ff88]/10 text-[#00ff88] px-4 py-2 rounded-lg border border-[#00ff88]/20">Hire Me</a>
         </div>
       </nav>
 
@@ -84,11 +84,17 @@ const App = () => {
             Never miss a potential client again.
           </p>
           <div className="mt-10 flex flex-wrap gap-4 justify-center">
-            <button className="bg-[#00ff88] text-black px-8 py-4 rounded-xl font-bold hover:shadow-[0_0_25px_rgba(0,255,136,0.3)] transition-all">
+            <button 
+              onClick={() => document.getElementById('workflow')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-[#00ff88] text-black px-8 py-4 rounded-xl font-bold hover:shadow-[0_0_25px_rgba(0,255,136,0.3)] transition-all"
+            >
               Live Demo
             </button>
-            <button className="border border-white/10 px-8 py-4 rounded-xl font-bold hover:bg-white/5 transition-all">
-              View Documentation
+            <button 
+              onClick={() => document.getElementById('cases')?.scrollIntoView({ behavior: 'smooth' })}
+              className="border border-white/10 px-8 py-4 rounded-xl font-bold hover:bg-white/5 transition-all"
+            >
+              View Case Studies
             </button>
           </div>
         </motion.div>
