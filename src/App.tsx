@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Bot, Zap, Cpu, CheckCircle2, Layout, Database, MessageSquare, Code, Globe, Mail } from "lucide-react";
+import ChatWidget from "./ChatWidget";
 
 const WorkflowStep = ({ icon: Icon, title, description, isLast }: { icon: any, title: string, description: string, isLast?: boolean }) => (
   <div className="relative flex flex-col items-center group">
@@ -165,9 +166,11 @@ const App = () => {
       {/* Footer */}
       <footer className="py-10 px-6 md:px-20 lg:px-24 border-t border-white/5 text-center">
         <p className="text-gray-500 text-sm">
-          Designed & Developed by <a href="https://qaiseradnan.com" className="text-[#00ff88]">Adnan Qaiser</a>
+          Designed & Developed by <a href="https://aq-dev-portfolio.vercel.app/" className="text-[#00ff88]">Adnan Qaiser</a>
         </p>
       </footer>
+
+      <ChatWidget />
     </div>
   );
 };
