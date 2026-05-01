@@ -84,7 +84,11 @@ const ChatWidget = () => {
                   </div>
                 </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="hover:bg-black/10 p-1 rounded-full transition-colors">
+              <button 
+                onClick={() => setIsOpen(false)} 
+                className="hover:bg-black/10 p-1 rounded-full transition-colors"
+                aria-label="Close chat"
+              >
                 <X size={20} />
               </button>
             </div>
@@ -131,10 +135,12 @@ const ChatWidget = () => {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                   placeholder="Ask me anything..."
+                  aria-label="Chat message"
                   className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm outline-none focus:border-[#00ff88] transition-all"
                 />
                 <button
                   onClick={handleSend}
+                  aria-label="Send message"
                   className="bg-[#00ff88] text-black p-2 rounded-xl hover:scale-105 transition-transform"
                 >
                   <Send size={18} />
@@ -149,6 +155,7 @@ const ChatWidget = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Close chat" : "Open chat"}
         className="w-14 h-14 bg-[#00ff88] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,255,136,0.3)] text-black relative z-[10000]"
       >
         {isOpen ? <X size={24} /> : <MessageSquare size={24} />}

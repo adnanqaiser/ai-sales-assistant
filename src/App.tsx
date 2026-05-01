@@ -11,7 +11,7 @@ const WorkflowStep = ({ icon: Icon, title, description, isLast }: { icon: Lucide
     >
       <Icon size={28} />
     </motion.div>
-    <h4 className="mt-4 font-bold text-sm text-center">{title}</h4>
+    <h3 className="mt-4 font-bold text-sm text-center">{title}</h3>
     <p className="text-[10px] text-gray-400 text-center max-w-[120px] mt-1">{description}</p>
     
     {!isLast && (
@@ -79,191 +79,196 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="px-6 md:px-20 lg:px-24 pt-40 pb-20 text-center relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[#00ff88]/5 blur-[120px] rounded-full -z-10" />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="text-[#00ff88] font-bold text-xs uppercase tracking-widest mb-4 block">
-            Powered by OpenAI & n8n
-          </span>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            AI-Powered <span className="text-[#00ff88]">Sales Assistant</span>
-          </h1>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            A standalone intelligent agent that qualifies leads, answers FAQs, and books appointments 24/7. 
-            Never miss a potential client again.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4 justify-center">
-            <button 
-              onClick={() => document.getElementById('workflow')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-[#00ff88] text-black px-8 py-4 rounded-xl font-bold hover:shadow-[0_0_25px_rgba(0,255,136,0.3)] transition-all"
-            >
-              Live Demo
-            </button>
-            <button 
-              onClick={() => document.getElementById('cases')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border border-white/10 px-8 py-4 rounded-xl font-bold hover:bg-white/5 transition-all"
-            >
-              View Case Studies
-            </button>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Workflow Visualizer */}
-      <section id="workflow" className="py-20 px-6 md:px-20 lg:px-24">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
-          <p className="text-gray-400">Automated end-to-end booking journey</p>
-        </div>
-
-        <div className="glass-card p-10 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-               style={{ backgroundImage: `radial-gradient(#fff 1px, transparent 0)`, backgroundSize: '30px 30px' }}>
-          </div>
-
-          <div className="relative z-10 flex flex-col lg:flex-row justify-between items-center gap-12 lg:gap-4">
-            <WorkflowStep 
-              icon={MessageSquare} 
-              title="User Interaction" 
-              description="Customer asks a question via Chat or WhatsApp"
-            />
-            <WorkflowStep 
-              icon={Cpu} 
-              title="AI Analysis" 
-              description="LLM processes intent & fetches business data"
-            />
-            <WorkflowStep 
-              icon={Database} 
-              title="Slot Checking" 
-              description="Checks real-time availability in Calendar"
-            />
-            <WorkflowStep 
-              icon={Zap} 
-              title="Instant Booking" 
-              description="Confirmation sent & CRM updated automatically"
-              isLast
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies */}
-      <section id="cases" className="py-20 px-6 md:px-20 lg:px-24 bg-white/[0.01]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <CaseStudyCard 
-            title="Healthcare Clinic"
-            description="Automated patient booking for a local dental clinic, handling after-hours inquiries."
-            results={[
-              "45% more bookings after-hours",
-              "Zero manual work for receptionists",
-              "Instant confirmation for patients"
-            ]}
-          />
-          <CaseStudyCard 
-            title="E-commerce Support"
-            description="AI Agent handling order tracking and refund queries for a Shopify store."
-            results={[
-              "70% reduction in support tickets",
-              "Average response time: 2 seconds",
-              "Improved conversion by 15%"
-            ]}
-          />
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 md:px-20 lg:px-24">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
-            <p className="text-gray-400">Ready to automate your sales? Send me a message!</p>
-          </div>
-
-          <div className="glass-card p-8 md:p-12 border border-white/5 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#00ff88]/5 blur-[80px] rounded-full -z-10" />
-            
-            {submitted ? (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-12"
+      <main>
+        {/* Hero Section */}
+        <section className="px-6 md:px-20 lg:px-24 pt-40 pb-20 text-center relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[#00ff88]/5 blur-[120px] rounded-full -z-10" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="text-[#00ff88] font-bold text-xs uppercase tracking-widest mb-4 block">
+              Powered by OpenAI & n8n
+            </span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              AI-Powered <span className="text-[#00ff88]">Sales Assistant</span>
+            </h1>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              A standalone intelligent agent that qualifies leads, answers FAQs, and books appointments 24/7. 
+              Never miss a potential client again.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4 justify-center">
+              <button 
+                onClick={() => document.getElementById('workflow')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-[#00ff88] text-black px-8 py-4 rounded-xl font-bold hover:shadow-[0_0_25px_rgba(0,255,136,0.3)] transition-all"
               >
-                <div className="w-20 h-20 bg-[#00ff88]/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle2 size={40} className="text-[#00ff88]" />
-                </div>
-                <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-                <p className="text-gray-400">Thank you for reaching out. I'll get back to you shortly.</p>
-                <button 
-                  onClick={() => setSubmitted(false)}
-                  className="mt-8 text-[#00ff88] hover:underline text-sm font-medium"
-                >
-                  Send another message
-                </button>
-              </motion.div>
-            ) : (
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-400">Full Name</label>
-                    <input 
-                      required
-                      type="text" 
-                      placeholder="John Doe"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00ff88]/50 transition-colors"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-400">Email Address</label>
-                    <input 
-                      required
-                      type="email" 
-                      placeholder="john@example.com"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00ff88]/50 transition-colors"
-                    />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-400">Subject</label>
-                  <select className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00ff88]/50 transition-colors appearance-none">
-                    <option className="bg-[#0a0a0a]">AI Automation Project</option>
-                    <option className="bg-[#0a0a0a]">Consultation</option>
-                    <option className="bg-[#0a0a0a]">Custom Chatbot</option>
-                    <option className="bg-[#0a0a0a]">Other</option>
-                  </select>
-                </div>
+                Live Demo
+              </button>
+              <button 
+                onClick={() => document.getElementById('cases')?.scrollIntoView({ behavior: 'smooth' })}
+                className="border border-white/10 px-8 py-4 rounded-xl font-bold hover:bg-white/5 transition-all"
+              >
+                View Case Studies
+              </button>
+            </div>
+          </motion.div>
+        </section>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-400">Message</label>
-                  <textarea 
-                    required
-                    rows={4}
-                    placeholder="Tell me about your project..."
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00ff88]/50 transition-colors resize-none"
-                  />
-                </div>
-
-                <button 
-                  type="submit"
-                  className="w-full bg-[#00ff88] text-black font-bold py-4 rounded-xl hover:shadow-[0_0_20px_rgba(0,255,136,0.2)] transition-all flex items-center justify-center gap-2"
-                >
-                  <Mail size={20} />
-                  Send Message
-                </button>
-              </form>
-            )}
+        {/* Workflow Visualizer */}
+        <section id="workflow" className="py-20 px-6 md:px-20 lg:px-24">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
+            <p className="text-gray-400">Automated end-to-end booking journey</p>
           </div>
-        </div>
-      </section>
+
+          <div className="glass-card p-10 relative overflow-hidden">
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+                 style={{ backgroundImage: `radial-gradient(#fff 1px, transparent 0)`, backgroundSize: '30px 30px' }}>
+            </div>
+
+            <div className="relative z-10 flex flex-col lg:flex-row justify-between items-center gap-12 lg:gap-4">
+              <WorkflowStep 
+                icon={MessageSquare} 
+                title="User Interaction" 
+                description="Customer asks a question via Chat or WhatsApp"
+              />
+              <WorkflowStep 
+                icon={Cpu} 
+                title="AI Analysis" 
+                description="LLM processes intent & fetches business data"
+              />
+              <WorkflowStep 
+                icon={Database} 
+                title="Slot Checking" 
+                description="Checks real-time availability in Calendar"
+              />
+              <WorkflowStep 
+                icon={Zap} 
+                title="Instant Booking" 
+                description="Confirmation sent & CRM updated automatically"
+                isLast
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Case Studies */}
+        <section id="cases" className="py-20 px-6 md:px-20 lg:px-24 bg-white/[0.01]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <CaseStudyCard 
+              title="Healthcare Clinic"
+              description="Automated patient booking for a local dental clinic, handling after-hours inquiries."
+              results={[
+                "45% more bookings after-hours",
+                "Zero manual work for receptionists",
+                "Instant confirmation for patients"
+              ]}
+            />
+            <CaseStudyCard 
+              title="E-commerce Support"
+              description="AI Agent handling order tracking and refund queries for a Shopify store."
+              results={[
+                "70% reduction in support tickets",
+                "Average response time: 2 seconds",
+                "Improved conversion by 15%"
+              ]}
+            />
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="py-20 px-6 md:px-20 lg:px-24">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
+              <p className="text-gray-400">Ready to automate your sales? Send me a message!</p>
+            </div>
+
+            <div className="glass-card p-8 md:p-12 border border-white/5 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#00ff88]/5 blur-[80px] rounded-full -z-10" />
+              
+              {submitted ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-12"
+                >
+                  <div className="w-20 h-20 bg-[#00ff88]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 size={40} className="text-[#00ff88]" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
+                  <p className="text-gray-400">Thank you for reaching out. I'll get back to you shortly.</p>
+                  <button 
+                    onClick={() => setSubmitted(false)}
+                    className="mt-8 text-[#00ff88] hover:underline text-sm font-medium"
+                  >
+                    Send another message
+                  </button>
+                </motion.div>
+              ) : (
+                <form className="space-y-6" onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-sm font-medium text-gray-400">Full Name</label>
+                      <input 
+                        required
+                        id="name"
+                        type="text" 
+                        placeholder="John Doe"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00ff88]/50 transition-colors"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-sm font-medium text-gray-400">Email Address</label>
+                      <input 
+                        required
+                        id="email"
+                        type="email" 
+                        placeholder="john@example.com"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00ff88]/50 transition-colors"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label htmlFor="subject" className="text-sm font-medium text-gray-400">Subject</label>
+                    <select id="subject" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00ff88]/50 transition-colors appearance-none">
+                      <option className="bg-[#0a0a0a]">AI Automation Project</option>
+                      <option className="bg-[#0a0a0a]">Consultation</option>
+                      <option className="bg-[#0a0a0a]">Custom Chatbot</option>
+                      <option className="bg-[#0a0a0a]">Other</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-medium text-gray-400">Message</label>
+                    <textarea 
+                      required
+                      id="message"
+                      rows={4}
+                      placeholder="Tell me about your project..."
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-[#00ff88]/50 transition-colors resize-none"
+                    />
+                  </div>
+
+                  <button 
+                    type="submit"
+                    className="w-full bg-[#00ff88] text-black font-bold py-4 rounded-xl hover:shadow-[0_0_20px_rgba(0,255,136,0.2)] transition-all flex items-center justify-center gap-2"
+                  >
+                    <Mail size={20} />
+                    Send Message
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+        </section>
+      </main>
 
       {/* Footer */}
       <footer className="py-10 px-6 md:px-20 lg:px-24 border-t border-white/5 text-center">
-        <p className="text-gray-500 text-sm">
+        <p className="text-gray-400 text-sm">
           Designed & Developed by <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="text-[#00ff88] hover:underline">Adnan Qaiser</button>
         </p>
       </footer>
